@@ -1,19 +1,68 @@
 <template>
-  <template>
-  <el-container>
-    <el-aside style="width:180px;">
-    </el-aside>
+  <div class="common-layout">
+
+    <el-container> 
+      <div>
+        <el-aside width="150px">
+            <el-scrollbar height="320px">
+            <p v-for="item in 20" :key="item" class="scrollbar-demo-item">{{ item }}</p>
+            </el-scrollbar>
+        </el-aside>
+      </div>
     <el-container>
-      <el-header>XX管理系统</el-header>
-      <el-main>内容区域</el-main>
-      <el-footer>版权所有</el-footer>
+
+    <el-header>Header</el-header> 
+    
+    <el-main>Main</el-main>       
+
+    <el-footer>
+
+      <div>
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-input v-model="input" placeholder="Please input" clearable v-on:keydown.enter="onKeydownEnter" >  </el-input>
+        </el-form>
+      </div>
+      
+
+    </el-footer>
+
+
+      </el-container>
     </el-container>
-  </el-container>
+  </div>
 </template>
 
-</template>
+<script>
+  import { defineComponent, ref } from 'vue'
+
+  export default defineComponent({
+    setup() {
+      return {
+        input: ref(''),
+      }
+    },
+  })
+
+</script>
 
 <style scoped>
+
+.scrollbar-demo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 100px;
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
+}
+
+html,body,#app{
+    height: 100%;
+  }
+  
 .el-container {
   height: 100%;
 }
@@ -42,33 +91,5 @@
 
 .el-menu {
   background-color: #d3dce6;
-}
-</style>
-
-<style>
-      html,body,#app{
-        height:100%;
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
-
-<script>
-
-export default {
-  name: 'App',
-  components: {
-  }
-}
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
