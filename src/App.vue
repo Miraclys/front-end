@@ -43,6 +43,8 @@
 
   html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .chat-layout {
@@ -53,6 +55,7 @@
 
   .el-container {
     height: 100%;
+    width: 100vw;
   }
 
   .header {
@@ -72,8 +75,9 @@
   .el-main {
     background-color: #fff; 
     color: #333; 
-    padding: 20px;
+    padding: 0;
     overflow-y: auto;
+    height: calc(100% - 50px);
   }
 
   .chat-window {
