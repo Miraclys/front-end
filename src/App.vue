@@ -1,4 +1,7 @@
 <template>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-9bwd5f6F5U6h3qneWZDw17dflh1M/JGK8HzQWMMg+m+PTjs7eO13mlWT8AtOQqwCw1d0BN/DOoDZ3qfP4p4uw==" crossorigin="anonymous" />
+
   <div class="chat-layout">
     <el-container>
       <el-header class="header">
@@ -8,11 +11,14 @@
       <el-container>
         <el-aside width="200px" class="aside">
           
+          <el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>
           <router-link to="/home">Home</router-link>
           <hr>
-          <router-link to="/login">Login</router-link>
+          <el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>
+          <router-link to="/login"><i class="fas fa-sign-in-alt"></i>Login</router-link>
           <hr>
-          <router-link to="/rank">Rank</router-link> 
+          <el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>
+          <router-link to="/rank"><i class="fas fa-ranking-star"></i>Rank</router-link> 
 
         </el-aside>
 
@@ -29,7 +35,7 @@
           <el-footer class="footer">
             <!--<el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="height: 50px; flex: 1;"/>
             -->
-            <el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="flex: 1;" :autosize="{minRows: 2, maxRows: 5}"/>
+            <el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="flex: 1;" :autosize="{minRows: 2, maxRows: 5}" @keyup.enter="send"/>
             <el-button class="send-button" @click="sendMessage">submit</el-button>
           </el-footer>
 
@@ -45,6 +51,10 @@
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  .aside a {
+    text-decoration: none;
   }
 
   .chat-layout {
@@ -135,7 +145,8 @@
             time: new Date().toLocaleTimeString(),
             content: "你好，我是 Mini-chatGPT，有什么可以帮助你的吗？"
           }
-        ]
+        ],
+        sendOnEnter: true
       }
     },
 
@@ -150,11 +161,34 @@
     methods: {
       sendMessage() {
         const message = this.input;
-        const time = new Date().toLocaleTimeString();
-        const newRecord = { time, content: message };
-        this.messages.push(newRecord);
-        console.log(`发送消息：${message}，时间：${time}`);
-        this.input = '';
+        if (message == '') {
+          alert("输入不能为空！")
+        } else {
+          const time = new Date().toLocaleTimeString();
+          const newRecord = { time, content: message };
+          this.messages.push(newRecord);
+          console.log(`发送消息：${message}，时间：${time}`);
+          this.input = '';
+        }
+      }, 
+      send() {
+          if (this.sendOnEnter) {
+            this.sendMessage();
+          }
+      },
+      mounted() {
+        const chatWindow = this.$refs.chatWindow.$el;
+        chatWindow.addEventListener('wheel', event => {
+          event.preventDefault();
+          chatWindow.scrollTop += event.deltaY;
+        });
+        const input = this.$refs.input.$refs.input;
+        input.addEventListener('focus', () => {
+          this.sendOnEnter = false;
+        });
+        input.addEventListener('blur', () => {
+          this.sendOnEnter = true;
+        });
       }
     }
   }
