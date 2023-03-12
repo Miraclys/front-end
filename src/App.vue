@@ -141,6 +141,23 @@
           }
         ]
       }
+    },
+    mounted() {
+      const chatWindow = this.$refs.chatWindow.$el;
+        chatWindow.addEventListener('wheel', event => {
+        event.preventDefault();
+        chatWindow.scrollTop += event.deltaY;
+      });
+    },
+    methods: {
+      sendMessage() {
+        const message = this.input;
+        const time = new Date().toLocaleTimeString();
+        const newRecord = { time, content: message };
+        this.messages.push(newRecord);
+        console.log(`发送消息：${message}，时间：${time}`);
+        this.input = '';
+      }
     }
   }
 </script>
