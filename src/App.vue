@@ -11,15 +11,21 @@
       </div>
     <el-container>
 
-    <el-header>Header</el-header> 
+    <el-header>A Mini-chatGPT</el-header> 
     
-    <el-main>Main</el-main>       
+    <el-main>Main
+
+      
+
+    </el-main>       
 
     <el-footer>
 
       <div>
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
-          <el-input v-model="input" placeholder="Please input" clearable v-on:keydown.enter="onKeydownEnter" >  </el-input>
+          <el-input v-model="input" placeholder="Please input" clearable @keyup.enter="submit" > 
+              
+          </el-input>
         </el-form>
       </div>
       
@@ -33,6 +39,9 @@
 </template>
 
 <script>
+
+
+
   import { defineComponent, ref } from 'vue'
 
   export default defineComponent({
@@ -41,8 +50,14 @@
         input: ref(''),
       }
     },
+      submit() {
+        console.log('回车发送');
+      },
+      handleKeydown(event) {
+        event.preventDefault();
+      return false;
+    }
   })
-
 </script>
 
 <style scoped>
