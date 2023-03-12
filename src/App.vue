@@ -40,6 +40,7 @@
 </template>
 
 <style>
+
   html, body {
     height: 100%;
   }
@@ -103,6 +104,7 @@
 
   .message-content {
     font-size: 14px;
+    word-break: break-word;
   }
 
   .footer {
@@ -125,23 +127,14 @@
         input: "",
         messages: [
           {
-            username: "Alice",
-            time: "2022-01-01 10:00:00",
-            content: "你好"
-          },
-          {
-            username: "Bob",
-            time: "2022-01-01 10:01:00",
-            content: "你好，有什么需要帮助的吗？"
-          },
-          {
-            username: "Alice",
-            time: "2022-01-01 10:02:00",
-            content: "你好"
+            username: "Mini-chatGPT",
+            time: new Date().toLocaleTimeString(),
+            content: "你好，我是 Mini-chatGPT，有什么可以帮助你的吗？"
           }
         ]
       }
     },
+
     mounted() {
       const chatWindow = this.$refs.chatWindow.$el;
         chatWindow.addEventListener('wheel', event => {
@@ -149,6 +142,7 @@
         chatWindow.scrollTop += event.deltaY;
       });
     },
+
     methods: {
       sendMessage() {
         const message = this.input;
