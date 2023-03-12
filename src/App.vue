@@ -12,7 +12,7 @@
         <el-aside width="200px" class="aside">
           
           <el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>
-          <router-link to="/home">Home</router-link>
+          <router-link to="/">Home</router-link>
           <hr>
           <el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>
           <router-link to="/login"><i class="fas fa-sign-in-alt"></i>Login</router-link>
