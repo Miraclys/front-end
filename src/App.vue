@@ -2,6 +2,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-9bwd5f6F5U6h3qneWZDw17dflh1M/JGK8HzQWMMg+m+PTjs7eO13mlWT8AtOQqwCw1d0BN/DOoDZ3qfP4p4uw==" crossorigin="anonymous" />
 
+  <router-view></router-view>
+
   <div class="chat-layout">
     <el-container>
       <el-header class="header">
@@ -167,7 +169,7 @@
           const time = new Date().toLocaleTimeString();
           const newRecord = { time, content: message };
           this.messages.push(newRecord);
-          console.log(`发送消息：${message}，时间：${time}`);
+          console.log(`发送消息：${message},时间：${time}`);
           this.input = '';
         }
       }, 
