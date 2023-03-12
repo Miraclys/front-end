@@ -158,6 +158,7 @@
           console.log(`发送消息：${message},时间：${time}`);
           this.input = '';  
 
+
           let xhr = new XMLHttpRequest();
           let url = "http://127.0.0.1:8900/login";
           let data = {
@@ -166,22 +167,18 @@
 
           let json = JSON.stringify(data);
 
-          xhr.open("POST", url, json);
+          xhr.open("POST", url);
           xhr.setRequestHeader("Content-Type", "application/json")
 
           xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
               let response = xhr.responseText;
               console.log(response);
-
-              const times = new Date().toLocaleTimeString();
-              const newRecords = { username:'Mini-chatGPT', time, content: message };
-              this.messages.push(newRecords);
-              console.log(`发送消息：${response},时间：${times}`);
-              this.input = ''; 
-
             }
           }
+
+          xhr.send(json);
+          
         }
       }, 
       send() {
