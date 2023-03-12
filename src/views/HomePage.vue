@@ -8,14 +8,14 @@
       <el-container>
         <el-aside width="200px" class="aside">
           
-          <el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>
+          <!--<el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>-->
           <router-link to="/home">Home</router-link>
           <hr>
-          <el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>
-          <router-link to="/login"><i class="fas fa-sign-in-alt"></i>Login</router-link>
+          <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
+          <router-link to="/login">Login</router-link>
           <hr>
-          <el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>
-          <router-link to="/rank"><i class="fas fa-ranking-star"></i>Rank</router-link> 
+          <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
+          <router-link to="/rank">Rank</router-link> 
 
         </el-aside>
 
@@ -151,7 +151,7 @@
         const message = this.input;
         if (message == '') {
           alert("输入不能为空！")
-        } else {
+        } else { /* 发送信息到某个端口，然后获取后端的信息 */
           const time = new Date().toLocaleTimeString();
           const newRecord = { username:'Mini-chatGPT', time, content: message };
           this.messages.push(newRecord);
@@ -161,23 +161,9 @@
       }, 
       send() {
           if (this.sendOnEnter) {
-            this.sendMessage();
+            this.sendMessage(); // 这里发送后，可以接受后端的信息，然后输出
           }
       },
-      mounted() {
-        const chatWindow = this.$refs.chatWindow.$el;
-        chatWindow.addEventListener('wheel', event => {
-          event.preventDefault();
-          chatWindow.scrollTop += event.deltaY;
-        });
-        const input = this.$refs.input.$refs.input;
-        input.addEventListener('focus', () => {
-          this.sendOnEnter = false;
-        });
-        input.addEventListener('blur', () => {
-          this.sendOnEnter = true;
-        });
-      }
     }
   }
 </script>
