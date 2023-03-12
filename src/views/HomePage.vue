@@ -153,17 +153,42 @@
           alert("输入不能为空！")
         } else { /* 发送信息到某个端口，然后获取后端的信息 */
           const time = new Date().toLocaleTimeString();
-          const newRecord = { username:'Mini-chatGPT', time, content: message };
+          const newRecord = { username:'<Miraclys>', time, content: message };
           this.messages.push(newRecord);
           console.log(`发送消息：${message},时间：${time}`);
-          this.input = '';
+          this.input = '';  
+
+          let xhr = new XMLHttpRequest();
+          let url = "http://127.0.0.1:8900/login";
+          let data = {
+            value: this.input
+          }
+
+          let json = JSON.stringify(data);
+
+          xhr.open("POST", url, json);
+          xhr.setRequestHeader("Content-Type", "application/json")
+
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              let response = xhr.responseText;
+              console.log(response);
+
+              const times = new Date().toLocaleTimeString();
+              const newRecords = { username:'Mini-chatGPT', time, content: message };
+              this.messages.push(newRecords);
+              console.log(`发送消息：${response},时间：${times}`);
+              this.input = ''; 
+
+            }
+          }
         }
       }, 
       send() {
           if (this.sendOnEnter) {
             this.sendMessage(); // 这里发送后，可以接受后端的信息，然后输出
           }
-      },
+      }
     }
   }
 </script>
