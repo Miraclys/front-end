@@ -3,10 +3,17 @@
     <el-container>
       <el-header class="header">
         Mini-chatGPT
+        <div id="clock" class="clock">00:00:00</div>
       </el-header>
       <el-container>
         <el-aside width="200px" class="aside">
-          在线用户列表
+          
+          <router-link to="/home">Home</router-link>
+          <hr>
+          <router-link to="/login">Login</router-link>
+          <hr>
+          <router-link to="/rank">Rank</router-link> 
+
         </el-aside>
 
         <el-container>
@@ -20,8 +27,10 @@
           </el-main>
 
           <el-footer class="footer">
-            <el-input v-model="input" placeholder="请输入消息" clearable size="medium" style="height: 50px; flex: 1;"/>
-            <el-button class="send-button" @click="sendMessage">发送</el-button>
+            <!--<el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="height: 50px; flex: 1;"/>
+            -->
+            <el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="flex: 1;" :autosize="{minRows: 2, maxRows: 5}"/>
+            <el-button class="send-button" @click="sendMessage">submit</el-button>
           </el-footer>
 
         </el-container>
@@ -110,16 +119,6 @@
 
 <script>
   export default {
-
-    sendMessage() {
-      const message = this.input;
-      const time = new Date().toLocaleTimeString();
-      const newRecord = { time, content: message };
-      this.records.push(newRecord);
-      console.log(`发送消息：${message}，时间：${time}`);
-      this.input = '';
-    },
-
     name: "ChatRoom", 
     data() {
       return {
@@ -138,6 +137,7 @@
           {
             username: "Alice",
             time: "2022-01-01 10:02:00",
+            content: "你好"
           }
         ]
       }
