@@ -148,6 +148,7 @@
     },
     methods: {
       sendMessage() {
+        let self = this;
         const message = this.input;
         if (message == '') {
           alert("输入不能为空！")
@@ -170,13 +171,21 @@
           xhr.open("POST", url);
           xhr.setRequestHeader("Content-Type", "application/json")
 
-          /*xhr.onreadystatechange = function() {
+          xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
               let response = xhr.responseText;
               console.log(response);
-              alert(this.responseText);
+
+              const times = new Date().toLocaleTimeString();
+              const newRecords = { username:'<Mini-chatGPT>', times, content: response };
+              console.log(newRecords);
+              self.messages.push(newRecords);
+              
+              /*console.log(`发送消息：${response},时间：${times}`);*/
+              this.input = '';  
+
             }
-          }*/
+          }
 
           xhr.send(json);
         }
