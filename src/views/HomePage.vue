@@ -4,8 +4,7 @@
       <el-header class="header">
 
         Mini-chatGPT
-        
-        <div id="clock" class="clock">00:00:00</div>
+
       </el-header>
       <el-container>
         <el-aside width="200px" class="aside">
@@ -17,9 +16,9 @@
           </router-link>
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
-          <router-link to="/plus">
+          <router-link to="/login">
             <el-icon><ChatDotRound /></el-icon>
-            Plus
+            Login
           </router-link>
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
@@ -89,7 +88,7 @@
   }
 
   .aside {
-    /*background-image: url('your-background-image-url');*/
+    /*background-image: url('E:\Background&ProfilePhoto\初音未来.png');*/
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -119,6 +118,9 @@
     color: #fff; 
     text-align: center; 
     line-height: 60px;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 
   .aside {
@@ -269,7 +271,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
 
 
           let xhr = new XMLHttpRequest();
-          let url = "http://127.0.0.1:9900/login";
+          let url = "http://127.0.0.1:9910/login";
           let data = {
             value: message
           };
