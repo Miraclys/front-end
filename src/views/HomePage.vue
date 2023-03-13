@@ -2,7 +2,9 @@
     <div class="chat-layout">
     <el-container>
       <el-header class="header">
+
         Mini-chatGPT
+        
         <div id="clock" class="clock">00:00:00</div>
       </el-header>
       <el-container>
@@ -92,9 +94,9 @@
     background-size: cover;
     color: #fff;
     text-align: center;
-    line-height: 200px;
-    border: 1px solid #ccc;
-    font-size: 18px;
+    line-height: 250px;
+    border: 3px solid #ccc;
+    font-size: 20px;
   }
 
   .aside a {
@@ -123,7 +125,7 @@
     background-color: #f0f0f0; 
     color: #333; 
     text-align: center; 
-    line-height: 200px;
+    line-height: 220px;
   }
 
   .el-main {
@@ -174,6 +176,8 @@
 
   .send-button {
     margin-left: 10px;
+    height: 50px;
+    border-radius: 20px;
   }
 
   /* 自动补齐下拉框的样式 */
