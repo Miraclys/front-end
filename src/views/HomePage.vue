@@ -9,13 +9,22 @@
         <el-aside width="200px" class="aside">
           
           <!--<el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>-->
-          <router-link to="/home">Home</router-link>
+          <router-link to="/home">
+            <el-icon><ChatSquare /></el-icon>
+            Home
+          </router-link>
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
-          <router-link to="/login">Login</router-link>
+          <router-link to="/plus">
+            <el-icon><ChatDotRound /></el-icon>
+            Plus
+          </router-link>
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
-          <router-link to="/rank">Rank</router-link> 
+          <router-link to="/rank">
+            <el-icon><Histogram /></el-icon>
+            Rank
+          </router-link> 
 
         </el-aside>
 
@@ -41,6 +50,31 @@
     </el-container>
   </div>
 </template>
+
+<style scoped>
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .menu-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  .menu-item i {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .menu-text {
+    margin-left: 10px;
+  }
+</style>
 
 <style>
 
@@ -82,7 +116,7 @@
     text-align: center; 
     line-height: 60px;
   }
-
+  
   .aside {
     background-color: #f0f0f0; 
     color: #333; 
@@ -107,7 +141,7 @@
     margin: 10px 0;
     max-width: 60%;
     align-self: flex-start;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 10px;
     background-color: #f0f0f0;
   }
@@ -142,7 +176,15 @@
 </style>
 
 <script>
+
+import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
+
   export default {
+    components: {
+      ChatSquare,
+      ChatDotRound,
+      Histogram
+  },
     name: "ChatRoom", 
     data() {
       return {
@@ -200,6 +242,10 @@
 
           xhr.send(json);
         }
+        // 获取聊天框元素
+        var chatbox = document.getElementById("chat-window");
+        // 在发送消息后，将聊天框滚动到底部
+        chatbox.scrollTop = chatbox.scrollHeight;
       }, 
       send() {
           if (this.sendOnEnter) {

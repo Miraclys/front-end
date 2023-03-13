@@ -1,8 +1,14 @@
 <template>
-  <KeepAlive>
-    <router-view>
-    </router-view>
-  </KeepAlive>
+  <router-view></router-view>
 </template>
 
-  
+<script>
+import HomePage from './views/HomePage.vue'
+export default {
+  RouterView: { HomePage },
+}
+</script>
+
+<style>
+
+</style>
