@@ -50,6 +50,17 @@
     padding: 0;
   }
 
+  .aside {
+    /*background-image: url('your-background-image-url');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    line-height: 200px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+  }
+
   .aside a {
     text-decoration: none;
   }
