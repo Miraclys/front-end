@@ -162,23 +162,23 @@
           let xhr = new XMLHttpRequest();
           let url = "http://127.0.0.1:8900/login";
           let data = {
-            value: this.input
-          }
+            value: message
+          };
 
           let json = JSON.stringify(data);
 
           xhr.open("POST", url);
           xhr.setRequestHeader("Content-Type", "application/json")
 
-          xhr.onreadystatechange = function() {
+          /*xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
               let response = xhr.responseText;
               console.log(response);
+              alert(this.responseText);
             }
-          }
+          }*/
 
           xhr.send(json);
-          
         }
       }, 
       send() {
