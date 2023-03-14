@@ -49,6 +49,7 @@
             -->
             <el-input type="textarea" v-model="input" :autosize="{minRows: 2, maxRows: 5}" placeholder="Entering please..." :auto-complete="on" clearable size="medium" @keyup.enter="send"></el-input>
             <el-button class="send-button" @click="sendMessage">submit</el-button>
+            <el-button class="export-button" @click="exportChat">export</el-button>
           </el-footer>
 
         </el-container>
@@ -186,6 +187,12 @@
     border-radius: 20px;
   }
 
+  .export-button {
+    margin-left: 10px;
+    height: 50px;
+    border-radius: 20px;
+  }
+
   /* 自动补齐下拉框的样式 */
 .dropdown-menu {
   position: absolute;
@@ -222,7 +229,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
       ChatSquare,
       ChatDotRound,
       Histogram
-  },
+    },
     name: "ChatRoom", 
     data() {
       return {
@@ -238,6 +245,28 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
       }
     },
     methods: {
+      exportChat() {
+      const chatbox = document.getElementById("chat-window");
+      let chatLogs = "";
+      for (let i = 0; i < chatbox.children.length; i++) {
+          const chatMessage = chatbox.children[i].querySelector(".chat-bubble");
+          //const messageTime = chatbox.children[i].querySelector(".message-info");
+          if (chatMessage) {
+            const messageText = chatMessage.innerText.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
+            //const timeText = messageTime.innerText.trim();
+            const sender = chatMessage.classList.contains('user') ? 'Q' : 'A';
+            chatLogs += + "~ " + sender + ": " + messageText + "\n";
+            //chatLogs += "~" + timeText + "~ " + sender + ": " + messageText + "\n";
+          }
+      }
+      const downloadLink = document.createElement("a");
+      downloadLink.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(chatLogs));
+      downloadLink.setAttribute("download", "chat_logs.txt");
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+},
       sendMessage() {
         let self = this;
         const message = this.input;
