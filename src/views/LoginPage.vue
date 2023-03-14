@@ -8,7 +8,7 @@
       </el-header>
       <el-main>
 
-        <!--<el-avatar :src="../src/assets/logo.png" :size="100" :fit="cover">-->
+        <!--<el-avatar :src="..c/assets/logo.png" :size="100" :fit="cover">-->
           <!-- 头像未加载时显示的文字 -->
         <!--  <span>Avatar</span>-->
         <!--</el-avatar>-->
@@ -21,7 +21,7 @@
           <el-input v-model="form.username" placeholder="Username" id = "userName"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" placeholder="Password" type="password" id = "passWord"></el-input>
+          <el-input v-model="form.password" placeholder="Password" type="password" id = "passWord" @keyup.enter="login"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="submit-btn" @click="login">Login</el-button>
@@ -95,19 +95,42 @@ export default {
     };
   },
   methods: {
+    /*login() {
+      let xhr = new XMLHttpRequest();
+      let url = "http://127.0.0.1:9910/login";
+      let test = 'test';
+
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Content-Type", "application/json")
+
+      xhr.send(JSON.stringify(test));
+    }*/
     login() {
       const name = document.getElementById('userName').value;
-      const word = document.getElementById('passWord').value;
+      const word = document.getElementById("passWord").value;
       
-      /*let xhr = new XMLHttpRequest();
-      let url = "http://127.0.0.1:9900/login";
+      let xhr = new XMLHttpRequest();
+      let url = "http://127.0.0.1:9910/login";
+      
       let data = {
-        value: message
-      };*/
-      alert(name);
-      alert(word);
+        username: name,
+        password: word
+      };
+
+      let json = JSON.stringify(data);
+
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Content-Type", "application/json")
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          let response = xhr.responseText;
+          if (response != word) alert("Error, please re-enter...")
+        }
+      }
+
+      xhr.send(json);
     }
   }
 }
 </script>
-
