@@ -9,29 +9,40 @@
           <!--<el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>-->
         
         <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
-        <router-link to="/login">
-          <el-icon><ChatDotRound /></el-icon>
-          Login
-        </router-link>
-        <hr>
 
-        <router-link to="/home">
-          <el-icon><ChatSquare /></el-icon>
-          Home
-        </router-link>
+        <router-link to="/login" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><User /></el-icon>
+            Login
+          </router-link>
+          <hr>
 
-        <hr>
-        <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
-        <router-link to="/rank">
-          <el-icon><Histogram /></el-icon>
-          Rank
-        </router-link> 
+          <router-link to="/home" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><House /></el-icon>
+            Home
+          </router-link>
+
+          <hr>
+          <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
+          <router-link to="/rank" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><Histogram /></el-icon>
+            Rank
+          </router-link> 
 
         </el-aside>
         <el-container>
           <el-main>
+
+            <!--<el-row class="mb-4">
+              <el-button round>Round</el-button>
+              <el-button type="primary" round>Primary</el-button>
+              <el-button type="success" round>Success</el-button>
+              <el-button type="info" round>Info</el-button>
+              <el-button type="warning" round>Warning</el-button>
+              <el-button type="danger" round>Danger</el-button>
+            </el-row>-->
+
             <div class="rank">
-              <h1 class="rank-title">排行榜</h1>
+              <h1 class="rank-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">问题频率排行榜</h1>
               <el-table :data="rankList" border stripe class="rank-table">
                 <el-table-column prop="rank" label="排名"></el-table-column>
                 <el-table-column prop="question" label="问题"></el-table-column>
@@ -46,6 +57,7 @@
 </template>
 
 <style scoped>
+
   .menu-item {
     display: flex;
     align-items: center;
@@ -127,14 +139,14 @@
 
 <script>
 
-import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
+import {House, User, Histogram} from "@element-plus/icons";
 import { ElTable, ElTableColumn } from 'element-plus';
 
 export default {
 
   components: {
-    ChatSquare,
-    ChatDotRound,
+    House, 
+    User,
     Histogram,
     ElTable,
     ElTableColumn

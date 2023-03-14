@@ -13,7 +13,7 @@
           
           <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
           <router-link to="/login" style="color: #007bff;">
-            <el-icon style="color: #007bff;"><ChatDotRound /></el-icon>
+            <el-icon style="color: #007bff;"><User /></el-icon>
             Login
           </router-link>
           <hr>
@@ -223,12 +223,12 @@
 
 <script>
 
-import {House, ChatDotRound, Histogram} from "@element-plus/icons";
+import {House, User, Histogram} from "@element-plus/icons";
 
   export default {
     components: {
       House,
-      ChatDotRound,
+      User,
       Histogram
     },
     name: "ChatRoom", 
