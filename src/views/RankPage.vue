@@ -143,11 +143,6 @@ export default {
   data() {
     return {
       rankList: [
-          {
-            rank: '', 
-            question: '',
-            time: ''
-          },
       ],
     }
   },
@@ -171,7 +166,7 @@ export default {
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
           
-          for (var i = 0; i < data.length; ++i) {
+          for (var i = 0; i <  data.length; ++i) {
             const node = { rank: i + 1, question: data[i][0], time: data[i][2] }
             self.rankList.push(node);
           }

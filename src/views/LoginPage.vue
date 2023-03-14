@@ -1,12 +1,8 @@
 <template>
   <div class="common-layout">
-    <el-container>
-      <el-header>
-        
-        
 
-      </el-header>
-      <el-main>
+
+
 
         <!--<el-avatar :src="..c/assets/logo.png" :size="100" :fit="cover">-->
           <!-- 头像未加载时显示的文字 -->
@@ -30,12 +26,14 @@
     </div>
   </div>
 
-      </el-main>
-    </el-container>
   </div>
 </template>
 
 <style>
+
+body {
+    background-color: rgb(114, 146, 197);
+}
 
 .login-container {
   display: flex;

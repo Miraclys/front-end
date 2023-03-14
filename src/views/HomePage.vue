@@ -12,21 +12,21 @@
           <!--<el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>-->
           
           <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
-          <router-link to="/login">
-            <el-icon><ChatDotRound /></el-icon>
+          <router-link to="/login" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><ChatDotRound /></el-icon>
             Login
           </router-link>
           <hr>
 
-          <router-link to="/home">
-            <el-icon><ChatSquare /></el-icon>
+          <router-link to="/home" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><House /></el-icon>
             Home
           </router-link>
 
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
-          <router-link to="/rank">
-            <el-icon><Histogram /></el-icon>
+          <router-link to="/rank" style="color: #007bff;">
+            <el-icon style="color: #007bff;"><Histogram /></el-icon>
             Rank
           </router-link> 
 
@@ -179,6 +179,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
+    background-color: #fff;
   }
 
   .send-button {
@@ -222,11 +223,11 @@
 
 <script>
 
-import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
+import {House, ChatDotRound, Histogram} from "@element-plus/icons";
 
   export default {
     components: {
-      ChatSquare,
+      House,
       ChatDotRound,
       Histogram
     },
