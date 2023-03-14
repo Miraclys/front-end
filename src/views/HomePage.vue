@@ -239,34 +239,38 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
             username: "Mini-chatGPT",
             time: new Date().toLocaleTimeString(),
             content: "你好，我是 Mini-chatGPT，有什么可以帮助你的吗？"
-          }
+          },
         ],
-        sendOnEnter: true
+        sendOnEnter: true,
       }
     },
     methods: {
       exportChat() {
-      const chatbox = document.getElementById("chat-window");
-      let chatLogs = "";
-      for (let i = 0; i < chatbox.children.length; i++) {
-          const chatMessage = chatbox.children[i].querySelector(".chat-bubble");
-          //const messageTime = chatbox.children[i].querySelector(".message-info");
-          if (chatMessage) {
-            const messageText = chatMessage.innerText.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
-            //const timeText = messageTime.innerText.trim();
-            const sender = chatMessage.classList.contains('user') ? 'Q' : 'A';
-            chatLogs += + "~ " + sender + ": " + messageText + "\n";
-            //chatLogs += "~" + timeText + "~ " + sender + ": " + messageText + "\n";
-          }
-      }
-      const downloadLink = document.createElement("a");
-      downloadLink.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(chatLogs));
-      downloadLink.setAttribute("download", "chat_logs.txt");
-      downloadLink.style.display = "none";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-},
+        //const exportBtn = document.querySelector('#export-button');
+        //const chatLog = document.querySelectorAll('chat-bubble'); // 获取聊天记录
+   
+        // 创建一个空的 CSV 文件
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        // 将聊天记录转换为 CSV 格式
+        this.messages.forEach((message) => {
+          let time = message.time;
+          let user = message.username;
+          let text = message.content;
+          csvContent += `${time},${user},${text}\n`;
+        })
+
+
+        // 创建一个下载链接并将其添加到 DOM 中
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement('a');
+        link.setAttribute('href', encodedUri);
+        link.setAttribute('download', 'chat-log.txt');
+        document.body.appendChild(link);
+
+        // 模拟用户点击下载链接
+        link.click();
+      },
       sendMessage() {
         let self = this;
         const message = this.input;
@@ -297,7 +301,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
               console.log(response);
 
               const times = new Date().toLocaleTimeString();
-              const newRecords = { username:'<Mini-chatGPT>', times, content: response };
+              const newRecords = { username:'<Mini-chatGPT>', time:times, content: response };
               console.log(newRecords);
               self.messages.push(newRecords);
               
