@@ -9,6 +9,11 @@ const router = createRouter({
     history:createWebHistory(),
     routes:[
         {
+            // 访问根路径重定向到/home
+            path: '/',
+            redirect: '/login'
+        },
+        {
             path:'/',
             component:App,
         },

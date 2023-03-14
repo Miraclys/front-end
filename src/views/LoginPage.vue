@@ -106,6 +106,7 @@ export default {
       xhr.send(JSON.stringify(test));
     }*/
     login() {
+      let self = this;
       const name = document.getElementById('userName').value;
       const word = document.getElementById("passWord").value;
       
@@ -126,6 +127,9 @@ export default {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
           let response = xhr.responseText;
           if (response != word) alert("Error, please re-enter...")
+          else {
+            self.$router.push('/home');
+          }
         }
       }
 
