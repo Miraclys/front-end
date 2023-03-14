@@ -10,16 +10,19 @@
         <el-aside width="200px" class="aside">
           
           <!--<el-icon color="#6495ED" class="no-inherit"><Comment /></el-icon>-->
-          <router-link to="/home">
-            <el-icon><ChatSquare /></el-icon>
-            Home
-          </router-link>
-          <hr>
+          
           <!--<el-icon color="#6495ED" class="no-inherit"><Search /></el-icon>-->
           <router-link to="/login">
             <el-icon><ChatDotRound /></el-icon>
             Login
           </router-link>
+          <hr>
+
+          <router-link to="/home">
+            <el-icon><ChatSquare /></el-icon>
+            Home
+          </router-link>
+
           <hr>
           <!--<el-icon color="#6495ED" class="no-inherit"><TrendCharts /></el-icon>-->
           <router-link to="/rank">
@@ -150,6 +153,7 @@
     border-radius: 25px;
     padding: 10px;
     background-color: #f0f0f0;
+    /*background-color: #989797;*/
   }
 
   .chat-bubble:nth-child(even) {
@@ -161,6 +165,7 @@
   .message-info {
     font-size: 12px;
     color: #999;
+    /*color: #e7e5e5;*/
     margin-bottom: 5px;
   }
 
