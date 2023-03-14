@@ -34,8 +34,8 @@
               <h1 class="rank-title">排行榜</h1>
               <el-table :data="rankList" border stripe class="rank-table">
                 <el-table-column prop="rank" label="排名"></el-table-column>
-                <el-table-column prop="name" label="问题"></el-table-column>
-                <el-table-column prop="score" label="频率"></el-table-column>
+                <el-table-column prop="question" label="问题"></el-table-column>
+                <el-table-column prop="time" label="频率"></el-table-column>
               </el-table>
             </div>
           </el-main>
@@ -44,6 +44,7 @@
     </el-container>
   </div>
 </template>
+
 <style scoped>
   .menu-item {
     display: flex;
@@ -124,55 +125,62 @@
   }
   </style>
 
-
 <script>
 
 import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
 import { ElTable, ElTableColumn } from 'element-plus';
 
 export default {
+
   components: {
     ChatSquare,
     ChatDotRound,
     Histogram,
     ElTable,
     ElTableColumn
-},
+  },
 
   data() {
     return {
       rankList: [
           {
+            rank: '', 
             question: '',
-            answer: ''
+            time: ''
           },
       ],
     }
   },
 
-  mothods: {
+  mounted: function() {
+    this.setup();
+  },
+  
+  methods: {
     setup() {
-      alert("123123133");
-      //let self = this;
-      // 创建一个 XMLHttpRequest 对象
-      var xmlhttp = new XMLHttpRequest();
+      let self = this;
+      //alert("123123123");
+      let xhr = new XMLHttpRequest();
+      let url = "http://127.0.0.1:9000/rank";
 
-      xmlhttp.onreadystatechange = function() {
+      xhr.open("GET", url, true);
+
+      xhr.setRequestHeader("Content-Type", "application/json")
+
+      xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
-          data.forEach(element => {
-          alert(element[0]);
-          });
+          
+          for (var i = 0; i < data.length; ++i) {
+            const node = { rank: i + 1, question: data[i][0], time: data[i][2] }
+            self.rankList.push(node);
+          }
         }
       };
-
-      // 发送 HTTP 请求
-      xmlhttp.open("GET", "http://127.0.0.1:9910/rank", true);
-      xmlhttp.send();
-
-      // 更新网页内容
-    }
+    xhr.send();
   }
+  }
+
 }
 </script>
         

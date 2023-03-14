@@ -111,7 +111,7 @@ export default {
       const word = document.getElementById("passWord").value;
       
       let xhr = new XMLHttpRequest();
-      let url = "http://127.0.0.1:9910/login";
+      let url = "http://127.0.0.1:9000/login";
       
       let data = {
         username: name,
