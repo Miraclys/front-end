@@ -236,7 +236,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
         input: "",
         messages: [
           {
-            username: "Mini-chatGPT",
+            username: "<Mini-chatGPT>",
             time: new Date().toLocaleTimeString(),
             content: "你好，我是 Mini-chatGPT，有什么可以帮助你的吗？"
           },

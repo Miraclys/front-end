@@ -32,7 +32,7 @@
           <el-main>
             <div class="rank">
               <h1 class="rank-title">排行榜</h1>
-              <el-table :data="rankList" border stripe class="rank-table" id = "rankings">
+              <el-table :data="rankList" border stripe class="rank-table">
                 <el-table-column prop="rank" label="排名"></el-table-column>
                 <el-table-column prop="name" label="问题"></el-table-column>
                 <el-table-column prop="score" label="频率"></el-table-column>
@@ -138,23 +138,40 @@ export default {
     ElTable,
     ElTableColumn
 },
-  setup() {
-    // 创建一个 XMLHttpRequest 对象
-    var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
-        alert(data);
-      }
-    };
+  data() {
+    return {
+      rankList: [
+          {
+            question: '',
+            answer: ''
+          },
+      ],
+    }
+  },
 
-    // 发送 HTTP 请求
-    xmlhttp.open("GET", "http://127.0.0.1:9910/rank", true);
-    xmlhttp.send();
+  mothods: {
+    setup() {
+      alert("123123133");
+      //let self = this;
+      // 创建一个 XMLHttpRequest 对象
+      var xmlhttp = new XMLHttpRequest();
 
-    // 更新网页内容
-    
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
+          data.forEach(element => {
+          alert(element[0]);
+          });
+        }
+      };
+
+      // 发送 HTTP 请求
+      xmlhttp.open("GET", "http://127.0.0.1:9910/rank", true);
+      xmlhttp.send();
+
+      // 更新网页内容
+    }
   }
 }
 </script>
