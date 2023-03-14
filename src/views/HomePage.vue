@@ -47,7 +47,7 @@
             -->
             <!--<el-input v-model="input" placeholder="Entering please..." clearable size="medium" style="flex: 1;" :autosize="{minRows: 2, maxRows: 5}" @keyup.enter="send" id = "inputText" />
             -->
-            <el-input type="textarea" v-model="input" :autosize="{minRows: 2, maxRows: 5}" placeholder="Entering please..." clearable size="medium" @keyup.enter="send"></el-input>
+            <el-input type="textarea" v-model="input" :autosize="{minRows: 2, maxRows: 5}" placeholder="Entering please..." :auto-complete="on" clearable size="medium" @keyup.enter="send"></el-input>
             <el-button class="send-button" @click="sendMessage">submit</el-button>
           </el-footer>
 
@@ -177,7 +177,6 @@
   .footer {
     display: flex;
     align-items: center;
-    background-color: #f0f0f0;
     padding: 10px;
   }
 
@@ -239,29 +238,6 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
       }
     },
     methods: {
-
-      /*time_send() {
-        const messages = this.messages;
-        let messageIndex = 0;
-        let charIndex = 0;
-
-        function typeMessage() {
-          const message = messages[messageIndex];
-          const chatBubble = document.getElementById("chat-bubble");
-
-          chatBubble.innerHTML = message.substring(0, charIndex);
-          charIndex++;
-
-          if (charIndex > message.length) {
-            charIndex = 0;
-            messageIndex++;
-            if (messageIndex >= messages.length) {
-              messageIndex = 0;
-            }
-          }
-        }
-        setInterval(typeMessage, 100);
-      },*/
       sendMessage() {
         let self = this;
         const message = this.input;
@@ -315,60 +291,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
           }
       }
     },
-    autocomplete() {
-      // 定义自动补齐的数据
-var autoCompletionData = [
-  "apple",
-  "banana",
-  "cherry",
-  "date",
-  "elderberry",
-  "fig",
-  "grape",
-  "honeydew",
-  "kiwi",
-  "lemon"
-];
-
-// 绑定输入框的keyup事件
-("#inputText").on("keyup", function() {
-  // 获取输入框的值
-  var inputVal = (this).val();
-
-  // 如果输入框的值为空，隐藏自动补齐下拉框
-  if (inputVal == "") {
-    ("#autoCompletionDropdown").hide();
-    return;
-  }
-
-  // 过滤自动补齐的数据
-  var filteredData = autoCompletionData.filter(function(item) {
-    return item.indexOf(inputVal) == 0;
-  });
-
-  // 构建自动补齐下拉框的内容
-  var dropdownHtml = "";
-  filteredData.forEach(function(item) {
-    dropdownHtml += "<a class='dropdown-item' href='#'>" + item + "</a>";
-  });
-
-  // 将自动补齐下拉框的内容插入到页面中
-  ("#autoCompletionDropdown").html(dropdownHtml);
-
-  // 显示自动补齐下拉框
-  ("#autoCompletionDropdown").show();
-});
-
-// 绑定自动补齐下拉框的鼠标点击事件
-("#autoCompletionDropdown").on("click", ".dropdown-item", function() {
-  // 将选中的自动补齐项插入到输入框中
-  ("#inputText").val((this).text());
-
-  // 隐藏自动补齐下拉框
-  ("#autoCompletionDropdown").hide();
-});
-
-    }
-  }
+    
+}
 </script>
            
