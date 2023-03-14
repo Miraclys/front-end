@@ -271,7 +271,7 @@ import {ChatSquare, ChatDotRound, Histogram} from "@element-plus/icons";
 
 
           let xhr = new XMLHttpRequest();
-          let url = "http://127.0.0.1:9910/login";
+          let url = "http://127.0.0.1:9910/dialogue";
           let data = {
             value: message
           };
