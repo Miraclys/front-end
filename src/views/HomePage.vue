@@ -274,7 +274,7 @@ import {House, User, Histogram} from "@element-plus/icons";
       },
       sendMessage() {
         let self = this;
-        const message = this.input;
+        var message = this.input;
         if (message == '') {
           alert("输入不能为空！")
         } else { /* 发送信息到某个端口，然后获取后端的信息 */

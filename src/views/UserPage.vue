@@ -33,18 +33,18 @@
             <el-main>
   
               <div class="button-group">
-                <button class="button-primary">热点问题</button>
-                <button class="button-secondary" @click="toMaxUser">最多提问者</button>
+                <button class="button-secondary" @click="toRank">热点问题</button>
+                <button class="button-primary" @click="toMaxUser">最多提问者</button>
                 <button class="button-secondary">本月</button>
                 <button class="button-secondary">全部</button>
               </div>
   
               <div class="rank">
-                <h1 class="rank-title" style="font-family: 'Gill Sans', 'Gill Sans MT',Calibri,'Trebuchet MS', sans-serif;">最多提问者排行榜</h1>
+                <h1 class="rank-title" style="font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">最多提问者排行榜</h1>
                 <el-table :data="rankList" border stripe class="rank-table">
                   <el-table-column prop="rank" label="排名"></el-table-column>
-                  <el-table-column prop="question" label="问题"></el-table-column>
-                  <el-table-column prop="time" label="频率"></el-table-column>
+                  <el-table-column prop="question" label="用户"></el-table-column>
+                  <el-table-column prop="time" label="次数"></el-table-column>
                 </el-table>
               </div>
             </el-main>
@@ -201,11 +201,15 @@
         let self = this;
         self.$router.push('/rank/user');
       },
+      toRank() {
+        let self = this;
+        self.$router.push('/rank');
+      },  
       setup() {
         let self = this;
         //alert("123123123");
         let xhr = new XMLHttpRequest();
-        let url = "http://127.0.0.1:9000/rank";
+        let url = "http://127.0.0.1:9000/rank/user";
   
         xhr.open("GET", url, true);
   
