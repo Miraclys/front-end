@@ -32,17 +32,15 @@
         <el-container>
           <el-main>
 
-            <!--<el-row class="mb-4">
-              <el-button round>Round</el-button>
-              <el-button type="primary" round>Primary</el-button>
-              <el-button type="success" round>Success</el-button>
-              <el-button type="info" round>Info</el-button>
-              <el-button type="warning" round>Warning</el-button>
-              <el-button type="danger" round>Danger</el-button>
-            </el-row>-->
+            <div class="button-group">
+              <button class="button-primary" @click="toRank">热点问题</button>
+              <button class="button-secondary" @click="toMaxUser">最多提问者</button>
+              <button class="button-secondary">本月</button>
+              <button class="button-secondary">全部</button>
+            </div>
 
             <div class="rank">
-              <h1 class="rank-title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">问题频率排行榜</h1>
+              <h1 class="rank-title" style="font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS', sans-serif;">问题频率排行榜</h1>
               <el-table :data="rankList" border stripe class="rank-table">
                 <el-table-column prop="rank" label="排名"></el-table-column>
                 <el-table-column prop="question" label="问题"></el-table-column>
@@ -57,6 +55,41 @@
 </template>
 
 <style scoped>
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button-primary {
+  background-color: #1e90ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.button-secondary {
+  background-color: #fff;
+  color: #1e90ff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background-color: #f0f0f0;
+}
+
 
   .menu-item {
     display: flex;
@@ -164,6 +197,14 @@ export default {
   },
   
   methods: {
+    toMaxUser() {
+      let self = this;
+      self.$router.push('/rank/user');
+    },
+    toRank() {
+      let self = this;
+      self.$router.push('/rank');
+    },
     setup() {
       let self = this;
       //alert("123123123");
