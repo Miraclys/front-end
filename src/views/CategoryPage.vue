@@ -34,8 +34,8 @@
   
               <div class="button-group">
                 <button class="button-secondary" @click="toRank">热点问题</button>
-                <button class="button-primary" @click="toMaxUser">提问者排名</button>
-                <button class="button-secondary" @click="toCategory">最热板块</button>
+                <button class="button-secondary" @click="toMaxUser">提问者排名</button>
+                <button class="button-primary" @click="toCategory">热点板块</button>
                 <button class="button-secondary">全部</button>
               </div>
   
@@ -43,7 +43,7 @@
                 <h1 class="rank-title" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">最多提问者排行榜</h1>
                 <el-table :data="rankList" border stripe class="rank-table">
                   <el-table-column prop="rank" label="排名"></el-table-column>
-                  <el-table-column prop="question" label="用户"></el-table-column>
+                  <el-table-column prop="question" label="板块"></el-table-column>
                   <el-table-column prop="time" label="次数"></el-table-column>
                 </el-table>
               </div>
@@ -212,7 +212,7 @@
         let self = this;
         //alert("123123123");
         let xhr = new XMLHttpRequest();
-        let url = "http://127.0.0.1:9000/rank/user";
+        let url = "http://127.0.0.1:9000/rank/category";
   
         xhr.open("GET", url, true);
   

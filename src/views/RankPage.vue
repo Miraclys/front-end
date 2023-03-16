@@ -34,17 +34,18 @@
 
             <div class="button-group">
               <button class="button-primary" @click="toRank">热点问题</button>
-              <button class="button-secondary" @click="toMaxUser">最多提问者</button>
-              <button class="button-secondary">本月</button>
+              <button class="button-secondary" @click="toMaxUser">提问者排名</button>
+              <button class="button-secondary" @click="toCategory">最热板块</button>
               <button class="button-secondary">全部</button>
             </div>
 
             <div class="rank">
-              <h1 class="rank-title" style="font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS', sans-serif;">问题频率排行榜</h1>
+              <h1 class="rank-title" style="font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">问题频率排行榜</h1>
               <el-table :data="rankList" border stripe class="rank-table">
                 <el-table-column prop="rank" label="排名"></el-table-column>
                 <el-table-column prop="question" label="问题"></el-table-column>
                 <el-table-column prop="time" label="频率"></el-table-column>
+                <el-table-column prop="category" label="类别"></el-table-column>
               </el-table>
             </div>
           </el-main>
@@ -197,6 +198,10 @@ export default {
   },
   
   methods: {
+    toCategory() {
+      let self = this;
+      self.$router.push('/rank/category')
+    },
     toMaxUser() {
       let self = this;
       self.$router.push('/rank/user');
@@ -220,7 +225,7 @@ export default {
           var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
           
           for (var i = 0; i <  data.length; ++i) {
-            const node = { rank: i + 1, question: data[i][0], time: data[i][2] }
+            const node = { rank: i + 1, question: data[i][1], time: data[i][3], category: data[i][4]}
             self.rankList.push(node);
           }
         }

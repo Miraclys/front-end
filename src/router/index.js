@@ -5,6 +5,7 @@ import HomePage from '../views/HomePage.vue'
 // import PlusPage from '../views/PlusPage.vue'
 import LoginPage from '../views/LoginPage.vue'
 import UserPage from '../views/UserPage.vue'
+import CategoryPage from '../views/CategoryPage.vue'
 
 const router = createRouter({
     history:createWebHistory(),
@@ -33,6 +34,10 @@ const router = createRouter({
         {
             path:'/rank/user',
             component:UserPage
+        },
+        {
+            path: '/rank/category',
+            component:CategoryPage
         }
     ]
 })
