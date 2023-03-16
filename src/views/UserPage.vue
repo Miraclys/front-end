@@ -40,7 +40,7 @@
               </div>
   
               <div class="rank">
-                <h1 class="rank-title" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">最多提问者排行榜</h1>
+                <h1 class="rank-title" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">提问者排行榜</h1>
                 <el-table :data="rankList" border stripe class="rank-table">
                   <el-table-column prop="rank" label="排名"></el-table-column>
                   <el-table-column prop="question" label="用户"></el-table-column>

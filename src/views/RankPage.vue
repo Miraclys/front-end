@@ -45,7 +45,7 @@
                 <el-table-column prop="rank" label="排名"></el-table-column>
                 <el-table-column prop="question" label="问题"></el-table-column>
                 <el-table-column prop="time" label="频率"></el-table-column>
-                <el-table-column prop="category" label="类别"></el-table-column>
+                <el-table-column prop="category" label="板块"></el-table-column>
               </el-table>
             </div>
           </el-main>

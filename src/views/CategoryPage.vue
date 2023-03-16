@@ -40,7 +40,7 @@
               </div>
   
               <div class="rank">
-                <h1 class="rank-title" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">最多提问者排行榜</h1>
+                <h1 class="rank-title" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">板块排行榜</h1>
                 <el-table :data="rankList" border stripe class="rank-table">
                   <el-table-column prop="rank" label="排名"></el-table-column>
                   <el-table-column prop="question" label="板块"></el-table-column>
@@ -223,7 +223,7 @@
             var data = JSON.parse(this.responseText); // 在 js 中将 json 格式转为数组格式
             
             for (var i = 0; i <  data.length; ++i) {
-              const node = { rank: i + 1, question: data[i][0], time: data[i][2] }
+              const node = { rank: i + 1, question: data[i][0], time: data[i][1] }
               self.rankList.push(node);
             }
           }
